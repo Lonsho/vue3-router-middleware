@@ -1,0 +1,57 @@
+{
+  "name": "vue3-router-middleware",
+  "version": "1.0.0",
+  "description": "在vue3上优雅的使用路由中间件",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.mjs",
+  "types": "./lib/index.d.ts",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lonsho/vue3-router-middleware"
+  },
+  "scripts": {
+    "start": "rollup -c -w",
+    "build": "rollup -c",
+    "publish": "npm run build && node prepare-publish.js",
+    "install:npmmirror": "npm --registry=https://registry.npmmirror.com install"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "vue",
+    "router",
+    "vue-router",
+    "middleware",
+    "vue-router-middleware",
+    "vue-route-middleware",
+    "vue3-router-middleware"
+  ],
+  "author": "Lonsho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lonsho/vue3-router-middleware/issues"
+  },
+  "homepage": "https://github.com/lonsho/vue3-router-middleware#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "rollup": "^4.16.3",
+    "rollup-plugin-dts": "^6.2.1",
+    "tslib": "^2.8.1",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0"
+  }
+}
