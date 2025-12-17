@@ -95,7 +95,7 @@ function handleMiddleware(app: App, router: Router) {
         if (item.global) {
           return true
         }
-        if (to.meta.middleware) {
+        if (to.meta?.middleware) {
           const middleware = to.meta.middleware as string | string[]
           if (Array.isArray(middleware)) {
             return middleware.indexOf(item.name) >= 0
