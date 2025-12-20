@@ -8,7 +8,7 @@ npm i vue3-router-middleware
 
 ### 在 main.ts 中注册
 ```javascript
-import { RouterMiddleware, addMiddleware } from 'vue3-router-middleware'
+import RouterMiddleware, { addMiddleware } from 'vue3-router-middleware'
 const app = createApp(App)
 app.use(router)
 // 全量导入
