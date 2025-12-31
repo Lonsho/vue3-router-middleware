@@ -1,7 +1,7 @@
 {
   "name": "vue3-router-middleware",
-  "version": "1.0.2",
-  "description": "在vue3上优雅的使用路由中间件",
+  "version": "1.0.3",
+  "description": "在vue3上优雅的使用路由守卫",
   "main": "./lib/index.cjs",
   "module": "./lib/index.mjs",
   "types": "./lib/index.d.ts",

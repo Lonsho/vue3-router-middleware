@@ -89,9 +89,12 @@ function interceptNext(nativeNext: NavigationGuardNext): NavigationGuardNext & {
   return wrappedNext
 }
 function handleMiddleware(app: App, router: Router) {
-  if (router && app.config.globalProperties.$routerMiddlewares) {
+  if (router) {
     router.beforeEach(async (to, from, next) => {
-      const filterMiddlewareList = app.config.globalProperties.$routerMiddlewares.filter((item: MiddlewareItem) => {
+      if (app.config.globalProperties.$routerMiddlewaresReady) {
+        await app.config.globalProperties.$routerMiddlewaresReady
+      }
+      const filterMiddlewareList = app.config.globalProperties.$routerMiddlewares?.filter((item: MiddlewareItem) => {
         if (item.global) {
           return true
         }
@@ -115,12 +118,22 @@ function handleMiddleware(app: App, router: Router) {
       }
       next()
     })
+  }else {
+    (async () => {
+      await app.config.globalProperties.$routerMiddlewaresReady
+    })()
   }
 }
 export async function initMiddleware(app: App, options?: MiddlewareOptions) {
-  app.config.globalProperties.$routerMiddlewares = await scanRouterMiddleware(options)
+  app.config.globalProperties.$routerMiddlewaresReady = new Promise<MiddlewareItem[]>((resolve) => {
+    scanRouterMiddleware(options).then((middlewareList) => {
+      delete app.config.globalProperties.$routerMiddlewaresReady
+      app.config.globalProperties.$routerMiddlewares = middlewareList
+      resolve(middlewareList)
+    })
+  })
   const router = options?.router || app.config.globalProperties.$router
-  return handleMiddleware(app, router)
+  return handleMiddleware(app,router)
 }
 
 /**

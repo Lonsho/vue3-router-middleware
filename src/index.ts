@@ -30,8 +30,8 @@ import { initMiddleware } from './core'
  * ```
  */
 const RouterMiddlewarePlugin = {
-  install: (app: App, options?: MiddlewareOptions) => {
-    initMiddleware(app, options).then(() => {})
+  install: async (app: App, options?: MiddlewareOptions) => {
+    await initMiddleware(app, options)
   },
 }
 export default RouterMiddlewarePlugin

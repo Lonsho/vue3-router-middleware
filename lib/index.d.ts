@@ -90,7 +90,7 @@ declare function defineRouteMiddleware(middleware: RouteMiddleware): EnhancedRou
  * ```
  */
 declare const RouterMiddlewarePlugin: {
-    install: (app: App, options?: MiddlewareOptions) => void;
+    install: (app: App, options?: MiddlewareOptions) => Promise<void>;
 };
 
 export { addMiddleware, RouterMiddlewarePlugin as default, defineRouteMiddleware, removeMiddleware };
